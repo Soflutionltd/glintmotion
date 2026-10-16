@@ -42,7 +42,7 @@ async function countContributors(repo) {
 }
 
 async function collect() {
-  const [upstream, upstreamReleases, contributors, upstreamRegistry, effectsRegistry, effectsDirs, release] =
+  const [upstream, upstreamReleases, contributors, upstreamRegistry, effectsRegistry, effectsDirs, shaders, release] =
     await Promise.all([
       api(`repos/${UPSTREAM}`),
       api(`repos/${UPSTREAM}/releases?per_page=100`),
@@ -50,6 +50,7 @@ async function collect() {
       (await request(`https://raw.githubusercontent.com/${UPSTREAM}/main/registry/registry.json`)).json(),
       (await request(`https://raw.githubusercontent.com/${EFFECTS}/main/registry.json`)).json(),
       api(`repos/${EFFECTS}/contents/effects`),
+      api(`repos/${EFFECTS}/contents/transitions/gl`),
       api(`repos/${SELF}/releases/latest`),
     ]);
 
@@ -73,7 +74,7 @@ async function collect() {
     },
     effects: {
       catalog: effectsCatalog,
-      transitions: effectsRegistry.items.filter((item) => item.name.startsWith("gl-")).length,
+      transitions: shaders.filter((entry) => entry.name.endsWith(".glsl")).length,
       effects: effectsDirs.filter((entry) => entry.type === "dir").length,
     },
     glintmotion: {
@@ -99,6 +100,31 @@ function measure(text, size, weight, tracking = 0) {
   return fonts[weight].getAdvanceWidth(text, size) + tracking * size * Math.max(text.length - 1, 0);
 }
 
+// opentype.js 2.0's own toPathData() writes "NaN" for some coordinates.
+function pathData(path) {
+  const number = (value) => {
+    if (!Number.isFinite(value)) throw new Error(`glyph outline has a non-finite coordinate: ${value}`);
+    return String(Math.round(value * 100) / 100);
+  };
+  return path.commands
+    .map((command) => {
+      switch (command.type) {
+        case "M":
+        case "L":
+          return `${command.type}${number(command.x)} ${number(command.y)}`;
+        case "Q":
+          return `Q${number(command.x1)} ${number(command.y1)} ${number(command.x)} ${number(command.y)}`;
+        case "C":
+          return `C${number(command.x1)} ${number(command.y1)} ${number(command.x2)} ${number(command.y2)} ${number(command.x)} ${number(command.y)}`;
+        case "Z":
+          return "Z";
+        default:
+          throw new Error(`unknown path command ${command.type}`);
+      }
+    })
+    .join("");
+}
+
 // Text as outlines. `anchor` is start or end; `fit` shrinks the size until the text fits.
 function text(value, { x, y, size, weight = "SemiBold", fill = "#f3f4f6", anchor = "start", tracking = 0, fit }) {
   let fontSize = size;
@@ -108,10 +134,10 @@ function text(value, { x, y, size, weight = "SemiBold", fill = "#f3f4f6", anchor
   let cursor = anchor === "end" ? x - width : x;
   let data = "";
   if (tracking === 0) {
-    data = font.getPath(value, cursor, y, fontSize, { kerning: true }).toPathData(2);
+    data = pathData(font.getPath(value, cursor, y, fontSize, { kerning: true }));
   } else {
     for (const char of value) {
-      data += font.getPath(char, cursor, y, fontSize).toPathData(2);
+      data += pathData(font.getPath(char, cursor, y, fontSize));
       cursor += font.getAdvanceWidth(char, fontSize) + tracking * fontSize;
     }
   }

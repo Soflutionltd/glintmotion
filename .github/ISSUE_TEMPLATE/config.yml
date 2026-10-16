@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Propose an effect
+    url: https://github.com/Soflutionltd/glintmotion-effects/blob/main/CONTRIBUTING.md
+    about: Effects and transitions go to the Glintmotion Effects library.
