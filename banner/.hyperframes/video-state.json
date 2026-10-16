@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "historyId": "565193a3-929b-4ebc-b502-11fa55369761",
+  "currentRevision": "f72b4acb-57e3-4d0e-bca9-f884bbe8322f",
+  "pendingChanges": false,
+  "files": {
+    "fonts/Manrope-ExtraBold.ttf": {
+      "hash": "5be6d9b21d23981ab520f0bfc7800c434c9d093467ef24b85b16877e7709b03b",
+      "content": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/5b/5be6d9b21d23981ab520f0bfc7800c434c9d093467ef24b85b16877e7709b03b"
+    },
+    "fonts/Manrope-Medium.ttf": {
+      "hash": "88d3f8ef004b53483a202772d09acaab17ca99dd41905d9b4ab07ac635632378",
+      "content": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/88/88d3f8ef004b53483a202772d09acaab17ca99dd41905d9b4ab07ac635632378"
+    },
+    "fonts/Manrope-SemiBold.ttf": {
+      "hash": "abbefa1f58c7355b663c19f29ffe4cd7fc8c93a9e5f8b68f08d1e9ba2bc4ba0d",
+      "content": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/ab/abbefa1f58c7355b663c19f29ffe4cd7fc8c93a9e5f8b68f08d1e9ba2bc4ba0d"
+    },
+    "fonts/OFL.txt": {
+      "hash": "58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b",
+      "content": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/58/58172e0c0fac2cda8a37b348164bb55e44b0e69051e557e92b1d3f6910141f7b"
+    },
+    "index.html": {
+      "hash": "3f751171751004f2cba632bde65144af96c7714816db5f9694cf3a5e44bdd19b",
+      "content": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/3f/3f751171751004f2cba632bde65144af96c7714816db5f9694cf3a5e44bdd19b"
+    }
+  },
+  "revisions": {
+    "f72b4acb-57e3-4d0e-bca9-f884bbe8322f": {
+      "actor": {
+        "kind": "outside",
+        "name": "Outside"
+      },
+      "label": "Changed outside the app",
+      "startedAt": 1792168230342,
+      "endedAt": 1792168230342,
+      "files": {
+        "index.html": {
+          "before": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/07/0760a3a177562434cc82ea1d0c532c2a7d264fabf0aa5a1a80b84f77917d98b8",
+          "after": "/Users/antoinepinelli/.cache/hyperframes/history/565193a3-929b-4ebc-b502-11fa55369761/blobs/3f/3f751171751004f2cba632bde65144af96c7714816db5f9694cf3a5e44bdd19b"
+        }
+      }
+    }
+  },
+  "checks": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "snapshots": {
+    "latest": null,
+    "revisions": {},
+    "unversioned": []
+  },
+  "renders": {
+    "latest": {
+      "id": "b611918b-a7f1-4864-bfec-46a13701c555",
+      "completedAt": 1792168241114,
+      "output": "/tmp/banner-frames",
+      "status": "completed",
+      "revision": "f72b4acb-57e3-4d0e-bca9-f884bbe8322f"
+    },
+    "retainedRevisions": [
+      "f72b4acb-57e3-4d0e-bca9-f884bbe8322f"
+    ]
+  },
+  "pendingArtifactCleanup": []
+}

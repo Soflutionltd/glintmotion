@@ -1,0 +1,11 @@
+{
+  "name": "glintmotion-showcase",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "assets": "node scripts/assets.mjs"
+  },
+  "dependencies": {
+    "opentype.js": "^2.0.0"
+  }
+}
