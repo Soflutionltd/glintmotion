@@ -1,0 +1,270 @@
+{
+  "measured": "2026-10-16",
+  "machine": {
+    "model": "Mac14,6",
+    "chip": "Apple M2 Max",
+    "cores": 12,
+    "memoryGB": 96,
+    "macOS": "27.0.1"
+  },
+  "versions": {
+    "glintmotion": "0.2.0",
+    "glintmotionEngine": "0.8.164",
+    "hyperframes": "0.8.164"
+  },
+  "method": "3 runs per engine, interleaved, median kept; same Chrome (chrome-headless-shell from the app) and the same ffmpeg for every engine; default render settings, plus upstream with --gpu.",
+  "compositions": [
+    {
+      "name": "logo-reel",
+      "durationSeconds": 40,
+      "size": "1080×1920",
+      "runs": {
+        "glintmotion": [
+          35.16,
+          34.48,
+          33.51
+        ],
+        "hyperframes": [
+          54.8,
+          55.17,
+          54.5
+        ],
+        "hyperframes-gpu": [
+          52.06,
+          54.24,
+          51.31
+        ]
+      },
+      "medianSeconds": {
+        "glintmotion": 34.48,
+        "hyperframes": 54.8,
+        "hyperframes-gpu": 52.06
+      },
+      "speedup": 1.59,
+      "speedupVsGpu": 1.51,
+      "psnrVsHyperframesCpu": {
+        "glintmotion": 44.7,
+        "hyperframes-gpu": 45.6
+      },
+      "fileMB": {
+        "glintmotion": 49.4,
+        "hyperframes": 47.8,
+        "hyperframes-gpu": 49.5
+      }
+    },
+    {
+      "name": "appstore-preview",
+      "durationSeconds": 28.55,
+      "size": "886×1920",
+      "runs": {
+        "glintmotion": [
+          18.9,
+          21.57,
+          19.04
+        ],
+        "hyperframes": [
+          26.36,
+          25.37,
+          23.75
+        ],
+        "hyperframes-gpu": [
+          24.02,
+          23.74,
+          24.63
+        ]
+      },
+      "medianSeconds": {
+        "glintmotion": 19.04,
+        "hyperframes": 25.37,
+        "hyperframes-gpu": 24.02
+      },
+      "speedup": 1.33,
+      "speedupVsGpu": 1.26,
+      "psnrVsHyperframesCpu": {
+        "glintmotion": 47.1,
+        "hyperframes-gpu": 47.1
+      },
+      "fileMB": {
+        "glintmotion": 28.5,
+        "hyperframes": 9.2,
+        "hyperframes-gpu": 28.5
+      }
+    },
+    {
+      "name": "social-reel",
+      "durationSeconds": 25,
+      "size": "1080×1920",
+      "runs": {
+        "glintmotion": [
+          22.52,
+          18.71,
+          20.27
+        ],
+        "hyperframes": [
+          34.19,
+          31.77,
+          28.96
+        ],
+        "hyperframes-gpu": [
+          29.79,
+          28.09,
+          30.36
+        ]
+      },
+      "medianSeconds": {
+        "glintmotion": 20.27,
+        "hyperframes": 31.77,
+        "hyperframes-gpu": 29.79
+      },
+      "speedup": 1.57,
+      "speedupVsGpu": 1.47,
+      "psnrVsHyperframesCpu": {
+        "glintmotion": 45.7,
+        "hyperframes-gpu": 45.7
+      },
+      "fileMB": {
+        "glintmotion": 29.9,
+        "hyperframes": 29.6,
+        "hyperframes-gpu": 29.9
+      }
+    },
+    {
+      "name": "social-reel-short",
+      "durationSeconds": 12.5,
+      "size": "1080×1920",
+      "runs": {
+        "glintmotion": [
+          12.09,
+          11.61,
+          12.33
+        ],
+        "hyperframes": [
+          18.34,
+          17.99,
+          18.67
+        ],
+        "hyperframes-gpu": [
+          16.76,
+          16.32,
+          17.13
+        ]
+      },
+      "medianSeconds": {
+        "glintmotion": 12.09,
+        "hyperframes": 18.34,
+        "hyperframes-gpu": 16.76
+      },
+      "speedup": 1.52,
+      "speedupVsGpu": 1.39,
+      "psnrVsHyperframesCpu": {
+        "glintmotion": 45.6,
+        "hyperframes-gpu": 45.6
+      },
+      "fileMB": {
+        "glintmotion": 15.1,
+        "hyperframes": 14.9,
+        "hyperframes-gpu": 15.2
+      }
+    }
+  ],
+  "partial": {
+    "composition": "logo-reel",
+    "from": 10,
+    "to": 14,
+    "runs": [
+      10.9,
+      11.44,
+      10.81
+    ],
+    "medianSeconds": 10.9,
+    "fullMedianSeconds": 34.48
+  },
+  "curve": {
+    "composition": "logo-reel",
+    "points": [
+      {
+        "seconds": 10,
+        "runs": {
+          "glintmotion": [
+            16.36,
+            13.71,
+            14.69
+          ],
+          "hyperframes": [
+            21.44,
+            17.8,
+            17.74
+          ],
+          "hyperframes-gpu": [
+            17.74,
+            17.56,
+            17.03
+          ]
+        },
+        "medianSeconds": {
+          "glintmotion": 14.69,
+          "hyperframes": 17.8,
+          "hyperframes-gpu": 17.56
+        }
+      },
+      {
+        "seconds": 20,
+        "runs": {
+          "glintmotion": [
+            24.98,
+            20.45,
+            20.71
+          ],
+          "hyperframes": [
+            33.19,
+            30.07,
+            30.52
+          ],
+          "hyperframes-gpu": [
+            29.29,
+            30.15,
+            28.25
+          ]
+        },
+        "medianSeconds": {
+          "glintmotion": 20.71,
+          "hyperframes": 30.52,
+          "hyperframes-gpu": 29.29
+        }
+      },
+      {
+        "seconds": 30,
+        "runs": {
+          "glintmotion": [
+            33.82,
+            27.8,
+            28.62
+          ],
+          "hyperframes": [
+            42.8,
+            41.93,
+            42.83
+          ],
+          "hyperframes-gpu": [
+            40.63,
+            40.41,
+            40.7
+          ]
+        },
+        "medianSeconds": {
+          "glintmotion": 28.62,
+          "hyperframes": 42.8,
+          "hyperframes-gpu": 40.63
+        }
+      },
+      {
+        "seconds": 40,
+        "medianSeconds": {
+          "glintmotion": 34.48,
+          "hyperframes": 54.8,
+          "hyperframes-gpu": 52.06
+        }
+      }
+    ]
+  }
+}

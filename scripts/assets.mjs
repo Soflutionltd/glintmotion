@@ -4,7 +4,8 @@
 //
 //   GITHUB_TOKEN=… node scripts/assets.mjs
 //
-// Writes data/stats.json, assets/buttons/*.svg and assets/stats/numbers.svg.
+// Writes data/stats.json, assets/buttons/*.svg and assets/stats/*.svg. The speed charts read
+// data/bench.json, written by the source repository's scripts/bench-vs-hyperframes.mjs.
 
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, resolve } from "node:path";
@@ -179,36 +180,221 @@ ${subtitleText.svg}
 `;
 }
 
-function numbersCard(stats) {
+const ENGINES = [
+  { key: "glintmotion", label: "Glintmotion", fill: "url(#brand)", text: "#f3f4f6" },
+  { key: "hyperframes-gpu", label: "HyperFrames --gpu", fill: "#5b626b", text: "#c4c8cd" },
+  { key: "hyperframes", label: "HyperFrames", fill: "#3a3f46", text: "#c4c8cd" },
+];
+
+const seconds = (value) => `${value.toFixed(1)} s`;
+const percentFaster = (glintmotion, other) => Math.round((1 - glintmotion / other) * 100);
+
+/** Median render time saved against upstream's default settings, over every measured video. */
+function averageSaving(bench) {
+  const savings = bench.compositions.map((c) => 1 - c.medianSeconds.glintmotion / c.medianSeconds.hyperframes);
+  return Math.round((savings.reduce((sum, value) => sum + value, 0) / savings.length) * 100);
+}
+
+function cardFrame({ width, height, label, body, eyebrow, note }) {
+  const margin = 64;
+  const head = text(eyebrow, { x: margin, y: 66, size: 19, weight: "ExtraBold", fill: "#8d939b", tracking: 0.14 });
+  const right = text(note, { x: width - margin, y: 66, size: 19, weight: "Medium", fill: "#6b7178", anchor: "end" });
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" role="img" aria-label="${escapeXml(label)}">
+<defs>${BRAND}<linearGradient id="card" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#15171b"/><stop offset="0.55" stop-color="#0b0c0e"/><stop offset="1" stop-color="#0b120f"/></linearGradient></defs>
+<rect width="${width}" height="${height}" rx="36" fill="url(#card)"/>
+<rect x="1" y="1" width="${width - 2}" height="${height - 2}" rx="35" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2"/>
+${head.svg}
+${right.svg}
+${body}
+</svg>
+`;
+}
+
+const measuredOn = (bench) => `Measured ${bench.measured} · ${bench.machine.chip.replace("Apple ", "")} · same Chrome and FFmpeg`;
+
+/** One row per video: the three engines' median render times, and how much less Glintmotion takes. */
+function speedCard(bench) {
+  const width = 1600;
+  const margin = 64;
+  const labelWidth = 330;
+  const gainWidth = 230;
+  const barLeft = margin + labelWidth;
+  const barMax = width - margin - gainWidth - barLeft - 120;
+  const barHeight = 24;
+  const barGap = 8;
+  const rowHeight = ENGINES.length * (barHeight + barGap) + 44;
+  const top = 120;
+  const longest = Math.max(...bench.compositions.flatMap((c) => ENGINES.map((e) => c.medianSeconds[e.key])));
+  const rows = bench.compositions.map((composition, index) => {
+    const y = top + index * rowHeight;
+    const name = text(composition.name, { x: margin, y: y + 34, size: 28, weight: "ExtraBold", fit: labelWidth - 24 });
+    const meta = text(`${composition.durationSeconds} s · ${composition.size}`, {
+      x: margin,
+      y: y + 66,
+      size: 19,
+      weight: "Medium",
+      fill: "#8d939b",
+    });
+    const bars = ENGINES.map((engine, n) => {
+      const value = composition.medianSeconds[engine.key];
+      const barWidth = Math.max(6, (value / longest) * barMax);
+      const barY = y + n * (barHeight + barGap);
+      const label = text(seconds(value), {
+        x: barLeft + barWidth + 14,
+        y: barY + 19,
+        size: 19,
+        weight: engine.key === "glintmotion" ? "ExtraBold" : "SemiBold",
+        fill: engine.text,
+      });
+      return `<rect x="${barLeft}" y="${barY}" width="${barWidth.toFixed(1)}" height="${barHeight}" rx="8" fill="${engine.fill}"/>${label.svg}`;
+    });
+    const gain = percentFaster(composition.medianSeconds.glintmotion, composition.medianSeconds.hyperframes);
+    const gainText = text(`−${gain} %`, { x: width - margin, y: y + 46, size: 52, weight: "ExtraBold", fill: "url(#brand)", anchor: "end" });
+    const gainNote = text(`×${composition.speedup.toFixed(2)} vs HyperFrames`, {
+      x: width - margin,
+      y: y + 76,
+      size: 18,
+      weight: "Medium",
+      fill: "#8d939b",
+      anchor: "end",
+    });
+    const rule =
+      index < bench.compositions.length - 1
+        ? `<rect x="${margin}" y="${y + rowHeight - 22}" width="${width - margin * 2}" height="2" fill="rgba(255,255,255,0.06)"/>`
+        : "";
+    return `${name.svg}${meta.svg}${bars.join("")}${gainText.svg}${gainNote.svg}${rule}`;
+  });
+  const legendY = top + bench.compositions.length * rowHeight + 10;
+  let cursor = margin;
+  const legend = ENGINES.map((engine) => {
+    const label = text(engine.label, { x: cursor + 34, y: legendY + 19, size: 19, weight: "SemiBold", fill: "#c4c8cd" });
+    const item = `<rect x="${cursor}" y="${legendY + 2}" width="22" height="22" rx="6" fill="${engine.fill}"/>${label.svg}`;
+    cursor += 34 + label.width + 40;
+    return item;
+  });
+  const height = legendY + 64;
+  return cardFrame({
+    width,
+    height,
+    eyebrow: "RENDER TIME · SHORTER IS FASTER",
+    note: measuredOn(bench),
+    label: bench.compositions
+      .map((c) => `${c.name}: Glintmotion ${seconds(c.medianSeconds.glintmotion)}, HyperFrames ${seconds(c.medianSeconds.hyperframes)}`)
+      .join("; "),
+    body: `${rows.join("\n")}\n${legend.join("")}`,
+  });
+}
+
+/** One video cut to several lengths: render time against length, one line per engine, real time dotted. */
+function curveCard(bench) {
+  const width = 1600;
+  const height = 720;
+  const left = 140;
+  const right = width - 80;
+  const top = 130;
+  const bottom = height - 150;
+  const points = [...bench.curve.points]
+    .sort((a, b) => a.seconds - b.seconds)
+    .map((point) => ({ durationSeconds: point.seconds, medianSeconds: point.medianSeconds }));
+  const maxX = Math.ceil(Math.max(...points.map((p) => p.durationSeconds)) / 10) * 10;
+  const maxY = Math.ceil(Math.max(...points.flatMap((p) => ENGINES.map((e) => p.medianSeconds[e.key])), maxX) / 20) * 20;
+  const x = (value) => left + (value / maxX) * (right - left);
+  const y = (value) => bottom - (value / maxY) * (bottom - top);
+  const grid = [];
+  for (let value = 0; value <= maxY; value += 20) {
+    grid.push(`<rect x="${left}" y="${y(value) - 1}" width="${right - left}" height="2" fill="rgba(255,255,255,${value === 0 ? 0.14 : 0.05})"/>`);
+    grid.push(text(`${value} s`, { x: left - 18, y: y(value) + 7, size: 18, weight: "Medium", fill: "#6b7178", anchor: "end" }).svg);
+  }
+  for (let value = 0; value <= maxX; value += 10) {
+    grid.push(text(`${value} s`, { x: x(value) - 14, y: bottom + 36, size: 18, weight: "Medium", fill: "#6b7178" }).svg);
+  }
+  const realTime = `<path d="M${x(0)} ${y(0)} L${x(Math.min(maxX, maxY))} ${y(Math.min(maxX, maxY))}" stroke="rgba(255,255,255,0.22)" stroke-width="2" stroke-dasharray="4 8" fill="none"/>`;
+  const realTimeLabel = text("real time", {
+    x: x(Math.min(maxX, maxY)) - 12,
+    y: y(Math.min(maxX, maxY)) + 30,
+    size: 18,
+    weight: "Medium",
+    fill: "#8d939b",
+    anchor: "end",
+  }).svg;
+  const lines = [...ENGINES].reverse().map((engine) => {
+    const path = points.map((p, n) => `${n ? "L" : "M"}${x(p.durationSeconds).toFixed(1)} ${y(p.medianSeconds[engine.key]).toFixed(1)}`).join(" ");
+    const stroke = engine.key === "glintmotion" ? "url(#line)" : engine.fill === "#3a3f46" ? "#6b727b" : "#9aa1a9";
+    const dash = engine.key === "hyperframes-gpu" ? ` stroke-dasharray="14 10"` : "";
+    const dots = points
+      .map((p) => `<circle cx="${x(p.durationSeconds).toFixed(1)}" cy="${y(p.medianSeconds[engine.key]).toFixed(1)}" r="7" fill="#0b0c0e" stroke="${stroke}" stroke-width="4"/>`)
+      .join("");
+    return `<path d="${path}" stroke="${stroke}" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"${dash}/>${dots}`;
+  });
+  const last = points.at(-1);
+  const callout = text(`${seconds(last.medianSeconds.glintmotion)} for ${last.durationSeconds} s of video`, {
+    x: x(last.durationSeconds) - 18,
+    y: y(last.medianSeconds.glintmotion) + 52,
+    size: 20,
+    weight: "ExtraBold",
+    fill: "#e8eaed",
+    anchor: "end",
+  }).svg;
+  let cursor = left;
+  const legend = ENGINES.map((engine) => {
+    const stroke = engine.key === "glintmotion" ? "#2ee0a8" : engine.fill === "#3a3f46" ? "#6b727b" : "#9aa1a9";
+    const dash = engine.key === "hyperframes-gpu" ? ` stroke-dasharray="10 7"` : "";
+    const label = text(engine.label, { x: cursor + 48, y: height - 58, size: 19, weight: "SemiBold", fill: "#c4c8cd" });
+    const item = `<path d="M${cursor} ${height - 64} h34" stroke="${stroke}" stroke-width="5" stroke-linecap="round"${dash}/>${label.svg}`;
+    cursor += 48 + label.width + 40;
+    return item;
+  });
+  const axis = text(`length of ${bench.curve.composition} rendered`, {
+    x: right,
+    y: bottom + 70,
+    size: 18,
+    weight: "Medium",
+    fill: "#6b7178",
+    anchor: "end",
+  }).svg;
+  const svg = cardFrame({
+    width,
+    height,
+    eyebrow: "RENDER TIME BY VIDEO LENGTH",
+    note: measuredOn(bench),
+    label: `Render time of ${bench.curve.composition} cut to ${points.map((p) => `${p.durationSeconds} s`).join(", ")}, Glintmotion against HyperFrames`,
+    body: `${grid.join("")}${realTime}${realTimeLabel}${lines.join("")}${callout}${legend.join("")}${axis}`,
+  });
+  return svg.replace(
+    "</defs>",
+    `<linearGradient id="line" gradientUnits="userSpaceOnUse" x1="${left}" y1="0" x2="${right}" y2="0"><stop stop-color="#06E3FA"/><stop offset="1" stop-color="#4FDB5E"/></linearGradient></defs>`,
+  );
+}
+
+function numbersCard(stats, bench) {
   const width = 1600;
   const height = 400;
   const margin = 64;
   const gap = 24;
   const tileWidth = (width - margin * 2 - gap * 3) / 4;
   const inner = tileWidth - 64;
-  const behind = stats.glintmotion.engineBehind;
   const tiles = [
     {
-      value: String(stats.glintmotion.catalog),
-      label: "catalog items",
-      note: `${stats.hyperframes.catalog} HyperFrames + ${stats.effects.catalog} Glintmotion`,
+      value: `−${averageSaving(bench)} %`,
+      label: "render time vs HyperFrames",
+      note: `average of ${bench.compositions.length} videos, same Mac`,
+      accent: true,
+    },
+    {
+      value: seconds(bench.partial.medianSeconds),
+      label: `for ${bench.partial.to - bench.partial.from} s of a ${bench.compositions.find((c) => c.name === bench.partial.composition).durationSeconds} s video`,
+      note: "render only a passage, sound included",
       accent: true,
     },
     {
       value: String(stats.glintmotion.agentTools),
       label: "agent tools over MCP",
       note: "the agent drives the studio",
-      accent: true,
     },
     {
-      value: `v${stats.glintmotion.engine}`,
-      label: "HyperFrames engine",
-      note: behind === 0 ? "up to date with upstream" : `${behind} release${behind > 1 ? "s" : ""} behind upstream`,
-    },
-    {
-      value: compact(stats.hyperframes.stars),
-      label: "stars on HyperFrames",
-      note: `${stats.hyperframes.contributors} contributors upstream`,
+      value: String(stats.glintmotion.catalog),
+      label: "catalog items",
+      note: "blocks, effects and transitions",
     },
   ];
   const parts = tiles.map((tile, index) => {
@@ -271,5 +457,8 @@ writeFileSync(
   join(root, "assets/buttons/whats-new.svg"),
   button({ title: "What's new", subtitle: `Release notes v${stats.glintmotion.version}`, icon: "notes" }),
 );
-writeFileSync(join(root, "assets/stats/numbers.svg"), numbersCard(stats));
+const bench = JSON.parse(readFileSync(join(root, "data/bench.json"), "utf8"));
+writeFileSync(join(root, "assets/stats/numbers.svg"), numbersCard(stats, bench));
+writeFileSync(join(root, "assets/stats/speed.svg"), speedCard(bench));
+writeFileSync(join(root, "assets/stats/speed-curve.svg"), curveCard(bench));
 console.log(JSON.stringify(stats));

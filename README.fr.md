@@ -10,7 +10,7 @@
   <img src="https://img.shields.io/badge/macOS-13%2B%20%C2%B7%20Apple%20Silicon-f3f4f6?style=flat-square&labelColor=0b0c0e&logo=apple&logoColor=f3f4f6" alt="macOS 13 ou plus récent, Apple Silicon">
   <img src="https://img.shields.io/badge/notaris%C3%A9e-par%20Apple-f3f4f6?style=flat-square&labelColor=0b0c0e" alt="Notarisée par Apple">
   <a href="#connecter-ton-agent"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSoflutionltd%2Fglintmotion%2Fmain%2Fdata%2Fstats.json&query=%24.glintmotion.agentTools&suffix=%20outils&label=MCP&style=flat-square&labelColor=0b0c0e&color=4fdb5e" alt="Outils d'agent MCP"></a>
-  <a href="https://github.com/heygen-com/hyperframes"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSoflutionltd%2Fglintmotion%2Fmain%2Fdata%2Fstats.json&query=%24.glintmotion.engine&prefix=v&label=moteur%20HyperFrames&style=flat-square&labelColor=0b0c0e&color=06e3fa" alt="Version du moteur HyperFrames"></a>
+  <a href="https://github.com/Soflutionltd/glintmotion-source"><img src="https://img.shields.io/badge/code%20source-sur%20GitHub-f3f4f6?style=flat-square&labelColor=0b0c0e&logo=github&logoColor=f3f4f6" alt="Code source sur GitHub"></a>
   <a href="https://github.com/Soflutionltd/glintmotion-effects"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSoflutionltd%2Fglintmotion%2Fmain%2Fdata%2Fstats.json&query=%24.glintmotion.catalog&label=catalogue&suffix=%20%C3%A9l%C3%A9ments&style=flat-square&labelColor=0b0c0e&color=4fdb5e" alt="Éléments du catalogue"></a>
 </p>
 
@@ -26,7 +26,7 @@
 
 Tu décris une vidéo. Ton agent l'écrit en HTML, tu la regardes bouger dans le studio, tu la corriges image par image, et tu exportes une vidéo identique à l'aperçu, à l'image près.
 
-Glintmotion est un studio macOS natif construit sur le moteur [HyperFrames](https://github.com/heygen-com/hyperframes). Cursor, Claude Code ou n'importe quel client MCP se connecte à l'app et travaille dedans : il ouvre tes projets, écrit les scènes, parcourt la timeline, regarde les images, vérifie le mouvement et lance le rendu. Tu vois chaque changement en direct, et tu peux annuler tout le tour de l'agent en une fois.
+Glintmotion est un studio macOS natif, avec un moteur de rendu réglé pour les puces Apple. Cursor, Claude Code ou n'importe quel client MCP se connecte à l'app et travaille dedans : il ouvre tes projets, écrit les scènes, parcourt la timeline, regarde les images, vérifie le mouvement et lance le rendu. Tu vois chaque changement en direct, et tu peux annuler tout le tour de l'agent en une fois.
 
 ## Points forts
 
@@ -75,23 +75,49 @@ Glintmotion est un studio macOS natif construit sur le moteur [HyperFrames](http
   </tr>
 </table>
 
-## Glintmotion face à HyperFrames
-
-Glintmotion fait tourner le moteur HyperFrames et intègre chaque nouvelle version : une composition se rend de la même façon dans les deux, image pour image. La différence, c'est tout ce qu'il y a autour du moteur.
+## Vitesse
 
 <p align="center">
   <img src="assets/stats/numbers.svg" width="100%" alt="Glintmotion en chiffres">
 </p>
 
+<!-- speed:start -->
+<p align="center">
+  <img src="assets/stats/speed.svg" width="100%" alt="Temps de rendu de quatre vidéos, Glintmotion face à HyperFrames">
+</p>
+
+<p align="center">
+  <img src="assets/stats/speed-curve.svg" width="100%" alt="Temps de rendu selon la durée de la vidéo">
+</p>
+
+| Vidéo | Durée | Glintmotion | HyperFrames | HyperFrames `--gpu` | Temps gagné |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| logo-reel (1080×1920) | 40 s | **34,5 s** | 54,8 s | 52,1 s | **−37 %** (−34 % face à `--gpu`) |
+| appstore-preview (886×1920) | 28,6 s | **19,0 s** | 25,4 s | 24,0 s | **−25 %** (−21 % face à `--gpu`) |
+| social-reel (1080×1920) | 25 s | **20,3 s** | 31,8 s | 29,8 s | **−36 %** (−32 % face à `--gpu`) |
+| social-reel-short (1080×1920) | 12,5 s | **12,1 s** | 18,3 s | 16,8 s | **−34 %** (−28 % face à `--gpu`) |
+| 4 s de logo-reel (`--from 10 --to 14`) | 4 s | **10,9 s** | impossible : vidéo entière | impossible : vidéo entière | **−80 %** face à la vidéo entière |
+
+Qualité : face au rendu de HyperFrames encodé par le processeur (CRF 16), Glintmotion obtient en moyenne 45,8 dB de PSNR, et HyperFrames `--gpu` 46,0 dB. Au-dessus de 40 dB, la différence ne se voit pas.
+
+<sub>Mesuré le 2026-10-16 sur un Apple M2 Max, 12 cœurs, 96 Go, macOS 27.0.1. Glintmotion 0.2.0 tel qu'il se télécharge, HyperFrames 0.8.164 depuis npm. Même Chrome et même FFmpeg pour tous, réglages par défaut, et HyperFrames une seconde fois avec `--gpu`. Trois passages par moteur, en alternance, valeur du milieu retenue. La courbe rend logo-reel coupée à 10 s, 20 s, 30 s, 40 s. Script : [`bench-vs-hyperframes.mjs`](https://github.com/Soflutionltd/glintmotion-source/blob/main/scripts/bench-vs-hyperframes.mjs), temps bruts : [`data/bench.json`](data/bench.json).</sub>
+<!-- speed:end -->
+
+## Glintmotion face à HyperFrames
+
+Comment Glintmotion se compare à HyperFrames, le moteur open source de HeyGen qui transforme du HTML en vidéo.
+
 |                                        | **Glintmotion**                                                   | **HyperFrames** (open source)                                        |
 | -------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Moteur de rendu                        | HyperFrames, intégré à chaque version                             | HyperFrames                                                          |
+| Rendu de logo-reel (40 s)            | **34,5 s**                                                       | 54,8 s (52,1 s avec `--gpu`)                                  |
+| Encodage sur la puce graphique         | Par défaut                                                        | Option `--gpu`                                                       |
+| Rendu d'un seul passage                | `--from` / `--to`, son compris                                     | —                                                                    |
 | Où tu travailles                       | Studio macOS natif, signé et notarisé                             | CLI et Studio dans le navigateur (`npx hyperframes preview`)¹        |
 | Connexion de l'agent                   | Serveur MCP local, 41 outils, en direct dans le studio            | Compétences d'agent et CLI ; un MCP hébergé par HeyGen²              |
 | Annuler tout un tour de l'agent        | ✅                                                                | —                                                                    |
 | Vérification du mouvement image par image | ✅                                                             | —                                                                    |
 | Lint, mise en page et contraste        | ✅                                                                | ✅                                                                   |
-| Catalogue                              | Catalogue HyperFrames **plus** la bibliothèque Glintmotion Effects | Catalogue HyperFrames                                                |
+| Catalogue                              | Blocs et composants **plus** la bibliothèque Glintmotion Effects   | Blocs et composants                                                  |
 | Séries de modèles et comparaison       | ✅                                                                | Variables de composition                                             |
 | Prises du simulateur iOS               | ✅                                                                | —                                                                    |
 | Export Reel et Post                    | ✅                                                                | —                                                                    |
@@ -99,7 +125,8 @@ Glintmotion fait tourner le moteur HyperFrames et intègre chaque nouvelle versi
 | Rendu dans le cloud                    | —                                                                 | ✅ AWS Lambda, cloud HeyGen                                           |
 | Windows et Linux                       | —                                                                 | ✅                                                                   |
 | Langue de l'interface                  | Français pour l'instant                                           | Anglais                                                              |
-| Licence                                | App propriétaire                                                  | Apache 2.0                                                           |
+| Licence                                | [PolyForm Noncommercial](https://github.com/Soflutionltd/glintmotion-source/blob/main/LICENSE.md), code source sur GitHub | Apache 2.0                                 |
+| Contributions                          | Bienvenues, voir le [guide](https://github.com/Soflutionltd/glintmotion-source/blob/main/CONTRIBUTING.md) | Bienvenues                                 |
 
 <sub>¹ HeyGen propose aussi une app HyperFrames native pour Mac et Linux, en dehors du dépôt open source ; ce tableau compare Glintmotion au projet open source. ² `mcp.heygen.com`, avec un compte HeyGen. Les chiffres ci-dessus sont mis à jour chaque semaine depuis l'API GitHub par <a href="scripts/assets.mjs"><code>scripts/assets.mjs</code></a>.</sub>
 
@@ -109,10 +136,10 @@ Glintmotion fait tourner le moteur HyperFrames et intègre chaque nouvelle versi
   <a href="https://github.com/Soflutionltd/glintmotion-effects"><img src="assets/effects.webp" width="100%" alt="Cinq effets Glintmotion qui jouent côte à côte"></a>
 </p>
 
-[Glintmotion Effects](https://github.com/Soflutionltd/glintmotion-effects) est un catalogue public qui marche dans Glintmotion comme avec la CLI HyperFrames seule. Demande un effet à ton agent, ou installe-le toi-même :
+[Glintmotion Effects](https://github.com/Soflutionltd/glintmotion-effects) est un catalogue public d'effets et de transitions. Demande-en un à ton agent, ou installe-le toi-même avec la commande `glintmotion` (installée depuis **Connecter un agent**) :
 
 ```bash
-npx hyperframes add split-headline --registry https://raw.githubusercontent.com/Soflutionltd/glintmotion-effects/main
+glintmotion add split-headline --registry https://raw.githubusercontent.com/Soflutionltd/glintmotion-effects/main
 ```
 
 Chaque contribution passe par un robot avant la relecture : pas d'accès au réseau, ni hasard ni horloge, une licence acceptée, et un vrai rendu de l'effet. La bibliothèque est gratuite pour un usage non commercial ([PolyForm Noncommercial](https://github.com/Soflutionltd/glintmotion-effects/blob/main/LICENSE.md)) ; les œuvres de tiers gardent leur propre licence.
@@ -149,9 +176,15 @@ Il faut un Mac Apple Silicon sous macOS 13 ou plus récent. Chaque version donne
 ## Questions fréquentes
 
 <details>
-<summary><b>Glintmotion est-il un fork de HyperFrames ?</b></summary>
+<summary><b>Le code source est-il public ?</b></summary>
 <br>
-Il embarque le moteur et la CLI HyperFrames, intégrés depuis le projet d'origine à chaque version, et ajoute autour l'app macOS, les outils de l'agent, la vérification du mouvement, les séries, les prises du simulateur et l'export. Tes compositions HyperFrames s'ouvrent telles quelles dans Glintmotion.
+Oui, dans <a href="https://github.com/Soflutionltd/glintmotion-source">glintmotion-source</a> : tu peux le lire, construire l'app toi-même, la modifier et proposer des pull requests. Il est sous licence <a href="https://github.com/Soflutionltd/glintmotion-source/blob/main/LICENSE.md">PolyForm Noncommercial</a> : l'usage personnel et non commercial est gratuit, l'usage commercial demande une licence de Soflution Ltd (contact@soflution.com).
+</details>
+
+<details>
+<summary><b>Je peux contribuer à l'app ?</b></summary>
+<br>
+Oui : corrections, vitesse, outils de l'agent, studio et traductions de l'interface sont les bienvenus. Lis le <a href="https://github.com/Soflutionltd/glintmotion-source/blob/main/CONTRIBUTING.md">guide de contribution</a>, puis ouvre une pull request sur glintmotion-source.
 </details>
 
 <details>
@@ -180,10 +213,11 @@ Oui. Lis le <a href="https://github.com/Soflutionltd/glintmotion-effects/blob/ma
 
 ## Crédits
 
-- [HyperFrames](https://github.com/heygen-com/hyperframes) de HeyGen (Apache 2.0) : le moteur de rendu et la CLI qui tournent dans Glintmotion. Glintmotion n'existerait pas sans lui.
 - [GSAP](https://gsap.com) de GreenSock, chargé par les compositions depuis son CDN, sous la licence GSAP Standard « No Charge ».
 - [GL Transitions](https://github.com/gl-transitions/gl-transitions) (MIT), d'où viennent les transitions shader de la bibliothèque d'effets.
 - [Manrope](https://github.com/googlefonts/manrope) (SIL Open Font License), la police de cette page.
+
+Les licences du code tiers contenu dans l'app sont listées dans [LICENSE.md](https://github.com/Soflutionltd/glintmotion-source/blob/main/LICENSE.md).
 
 La bannière en haut est une composition Glintmotion : sa source est dans [`banner/`](banner/), rendue par le moteur de Glintmotion.
 
