@@ -1,10 +1,10 @@
 {
-  "updated": "2026-10-16",
+  "updated": "2026-10-19",
   "hyperframes": {
-    "stars": 65226,
-    "forks": 5878,
-    "contributors": 103,
-    "latest": "v0.8.166",
+    "stars": 67231,
+    "forks": 6084,
+    "contributors": 105,
+    "latest": "v0.8.174",
     "catalog": 455
   },
   "effects": {
@@ -14,10 +14,10 @@
   },
   "glintmotion": {
     "version": "0.2.0",
-    "downloads": 1,
+    "downloads": 2,
     "agentTools": 41,
     "engine": "0.8.164",
-    "engineBehind": 2,
+    "engineBehind": 10,
     "catalog": 585,
     "platform": "macOS · Apple Silicon"
   }
