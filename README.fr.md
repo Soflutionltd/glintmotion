@@ -92,15 +92,15 @@ Glintmotion est un studio macOS natif, avec un moteur de rendu réglé pour les 
 
 | Vidéo | Durée | Glintmotion | HyperFrames | HyperFrames `--gpu` | Temps gagné |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| logo-reel (1080×1920) | 40 s | **34,5 s** | 54,8 s | 52,1 s | **−37 %** (−34 % face à `--gpu`) |
-| appstore-preview (886×1920) | 28,6 s | **19,0 s** | 25,4 s | 24,0 s | **−25 %** (−21 % face à `--gpu`) |
-| social-reel (1080×1920) | 25 s | **20,3 s** | 31,8 s | 29,8 s | **−36 %** (−32 % face à `--gpu`) |
-| social-reel-short (1080×1920) | 12,5 s | **12,1 s** | 18,3 s | 16,8 s | **−34 %** (−28 % face à `--gpu`) |
-| 4 s de logo-reel (`--from 10 --to 14`) | 4 s | **10,9 s** | impossible : vidéo entière | impossible : vidéo entière | **−80 %** face à la vidéo entière |
+| logo-reel (1080×1920) | 40 s | **34,0 s** | 49,5 s | 48,9 s | **−31 %** (−30 % face à `--gpu`) |
+| appstore-preview (886×1920) | 28,6 s | **18,5 s** | 23,1 s | 23,8 s | **−20 %** (−22 % face à `--gpu`) |
+| social-reel (1080×1920) | 25 s | **19,3 s** | 29,1 s | 27,4 s | **−34 %** (−30 % face à `--gpu`) |
+| social-reel-short (1080×1920) | 12,5 s | **11,2 s** | 16,0 s | 16,1 s | **−30 %** (−31 % face à `--gpu`) |
+| 4 s de logo-reel (`--from 10 --to 14`) | 4 s | **9,8 s** | impossible : vidéo entière | impossible : vidéo entière | **−71 %** face à la vidéo entière |
 
-Qualité : face au rendu de HyperFrames encodé par le processeur (CRF 16), Glintmotion obtient en moyenne 45,8 dB de PSNR, et HyperFrames `--gpu` 46,0 dB. Au-dessus de 40 dB, la différence ne se voit pas.
+Qualité : face au rendu de HyperFrames encodé par le processeur (CRF 16), Glintmotion obtient en moyenne 46,1 dB de PSNR, et HyperFrames `--gpu` 46,4 dB. Au-dessus de 40 dB, la différence ne se voit pas.
 
-<sub>Mesuré le 2026-10-16 sur un Apple M2 Max, 12 cœurs, 96 Go, macOS 27.0.1. Glintmotion 0.2.0 tel qu'il se télécharge, HyperFrames 0.8.164 depuis npm. Même Chrome et même FFmpeg pour tous, réglages par défaut, et HyperFrames une seconde fois avec `--gpu`. Trois passages par moteur, en alternance, valeur du milieu retenue. La courbe rend logo-reel coupée à 10 s, 20 s, 30 s, 40 s. Script : [`bench-vs-hyperframes.mjs`](https://github.com/Soflutionltd/glintmotion-source/blob/main/scripts/bench-vs-hyperframes.mjs), temps bruts : [`data/bench.json`](data/bench.json).</sub>
+<sub>Mesuré le 2026-10-19 sur un Apple M2 Max, 12 cœurs, 96 Go, macOS 27.0.1. Glintmotion avec le moteur 0.8.174, HyperFrames 0.8.174 depuis npm. Même Chrome et même FFmpeg pour tous, réglages par défaut, et HyperFrames une seconde fois avec `--gpu`. Trois passages par moteur, en alternance, valeur du milieu retenue ; cinq pour la courbe, qui rend logo-reel coupée à 10 s, 20 s, 30 s, 40 s. Script : [`bench-vs-hyperframes.mjs`](https://github.com/Soflutionltd/glintmotion-source/blob/main/scripts/bench-vs-hyperframes.mjs), temps bruts : [`data/bench.json`](data/bench.json).</sub>
 <!-- speed:end -->
 
 ## Glintmotion face à HyperFrames
@@ -109,7 +109,7 @@ Comment Glintmotion se compare à HyperFrames, le moteur open source de HeyGen q
 
 |                                        | **Glintmotion**                                                   | **HyperFrames** (open source)                                        |
 | -------------------------------------- | ----------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Rendu de logo-reel (40 s)            | **34,5 s**                                                       | 54,8 s (52,1 s avec `--gpu`)                                  |
+| Rendu de logo-reel (40 s)            | **34,0 s**                                                       | 49,5 s (48,9 s avec `--gpu`)                                  |
 | Encodage sur la puce graphique         | Par défaut                                                        | Option `--gpu`                                                       |
 | Rendu d'un seul passage                | `--from` / `--to`, son compris                                     | —                                                                    |
 | Où tu travailles                       | Studio macOS natif, signé et notarisé                             | CLI et Studio dans le navigateur (`npx hyperframes preview`)¹        |

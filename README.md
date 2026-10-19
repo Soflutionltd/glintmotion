@@ -92,15 +92,15 @@ Glintmotion is a native macOS studio with a render engine tuned for Apple Silico
 
 | Video | Length | Glintmotion | HyperFrames | HyperFrames `--gpu` | Time saved |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| logo-reel (1080×1920) | 40 s | **34.5 s** | 54.8 s | 52.1 s | **−37 %** (−34 % vs `--gpu`) |
-| appstore-preview (886×1920) | 28.6 s | **19.0 s** | 25.4 s | 24.0 s | **−25 %** (−21 % vs `--gpu`) |
-| social-reel (1080×1920) | 25 s | **20.3 s** | 31.8 s | 29.8 s | **−36 %** (−32 % vs `--gpu`) |
-| social-reel-short (1080×1920) | 12.5 s | **12.1 s** | 18.3 s | 16.8 s | **−34 %** (−28 % vs `--gpu`) |
-| 4 s of logo-reel (`--from 10 --to 14`) | 4 s | **10.9 s** | not possible: whole video | not possible: whole video | **−80 %** vs the whole video |
+| logo-reel (1080×1920) | 40 s | **34.0 s** | 49.5 s | 48.9 s | **−31 %** (−30 % vs `--gpu`) |
+| appstore-preview (886×1920) | 28.6 s | **18.5 s** | 23.1 s | 23.8 s | **−20 %** (−22 % vs `--gpu`) |
+| social-reel (1080×1920) | 25 s | **19.3 s** | 29.1 s | 27.4 s | **−34 %** (−30 % vs `--gpu`) |
+| social-reel-short (1080×1920) | 12.5 s | **11.2 s** | 16.0 s | 16.1 s | **−30 %** (−31 % vs `--gpu`) |
+| 4 s of logo-reel (`--from 10 --to 14`) | 4 s | **9.8 s** | not possible: whole video | not possible: whole video | **−71 %** vs the whole video |
 
-Quality: against HyperFrames' CPU encode (CRF 16), Glintmotion averages 45.8 dB PSNR, and HyperFrames `--gpu` 46.0 dB. Above 40 dB, the difference cannot be seen.
+Quality: against HyperFrames' CPU encode (CRF 16), Glintmotion averages 46.1 dB PSNR, and HyperFrames `--gpu` 46.4 dB. Above 40 dB, the difference cannot be seen.
 
-<sub>Measured on 2026-10-16 on an Apple M2 Max, 12 cores, 96 GB, macOS 27.0.1. Glintmotion 0.2.0 as downloaded, HyperFrames 0.8.164 from npm. Same Chrome and same FFmpeg for every engine, default settings, plus HyperFrames a second time with `--gpu`. Three runs per engine, interleaved, median kept. The curve renders logo-reel cut to 10 s, 20 s, 30 s, 40 s. Script: [`bench-vs-hyperframes.mjs`](https://github.com/Soflutionltd/glintmotion-source/blob/main/scripts/bench-vs-hyperframes.mjs), raw timings: [`data/bench.json`](data/bench.json).</sub>
+<sub>Measured on 2026-10-19 on an Apple M2 Max, 12 cores, 96 GB, macOS 27.0.1. Glintmotion with engine 0.8.174, HyperFrames 0.8.174 from npm. Same Chrome and same FFmpeg for every engine, default settings, plus HyperFrames a second time with `--gpu`. Three runs per engine, interleaved, median kept; five for the curve, which renders logo-reel cut to 10 s, 20 s, 30 s, 40 s. Script: [`bench-vs-hyperframes.mjs`](https://github.com/Soflutionltd/glintmotion-source/blob/main/scripts/bench-vs-hyperframes.mjs), raw timings: [`data/bench.json`](data/bench.json).</sub>
 <!-- speed:end -->
 
 ## Glintmotion vs HyperFrames
@@ -109,7 +109,7 @@ How Glintmotion compares with HyperFrames, the open-source HTML-to-video rendere
 
 |                                   | **Glintmotion**                                                 | **HyperFrames** (open source)                                   |
 | --------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
-| Render of logo-reel (40 s)        | **34.5 s**                                                     | 54.8 s (52.1 s with `--gpu`)                                  |
+| Render of logo-reel (40 s)        | **34.0 s**                                                     | 49.5 s (48.9 s with `--gpu`)                                  |
 | GPU encoding                      | On by default                                                   | `--gpu` option                                                  |
 | Render one passage only           | `--from` / `--to`, sound included                               | —                                                               |
 | Where you work                    | Native macOS studio, signed and notarized                       | CLI and a browser Studio (`npx hyperframes preview`)¹           |
