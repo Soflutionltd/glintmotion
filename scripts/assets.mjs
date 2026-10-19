@@ -329,7 +329,7 @@ function curveCard(bench) {
   const last = points.at(-1);
   const callout = text(`${seconds(last.medianSeconds.glintmotion)} for ${last.durationSeconds} s of video`, {
     x: x(last.durationSeconds) - 18,
-    y: y(last.medianSeconds.glintmotion) + 52,
+    y: y(last.medianSeconds.glintmotion) + 68,
     size: 20,
     weight: "ExtraBold",
     fill: "#e8eaed",
