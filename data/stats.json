@@ -1,11 +1,11 @@
 {
-  "updated": "2026-10-19",
+  "updated": "2026-10-26",
   "hyperframes": {
-    "stars": 67231,
-    "forks": 6084,
-    "contributors": 105,
-    "latest": "v0.8.174",
-    "catalog": 455
+    "stars": 72630,
+    "forks": 6562,
+    "contributors": 119,
+    "latest": "v0.8.203",
+    "catalog": 456
   },
   "effects": {
     "catalog": 130,
@@ -17,8 +17,8 @@
     "downloads": 2,
     "agentTools": 41,
     "engine": "0.8.164",
-    "engineBehind": 10,
-    "catalog": 585,
+    "engineBehind": 38,
+    "catalog": 586,
     "platform": "macOS · Apple Silicon"
   }
 }
