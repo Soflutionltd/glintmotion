@@ -13,8 +13,8 @@ import opentype from "opentype.js";
 
 const root = resolve(import.meta.dirname, "..");
 const UPSTREAM = "heygen-com/hyperframes";
-const EFFECTS = "Soflutionltd/glintmotion-effects";
 const SELF = "Soflutionltd/glintmotion";
+const EFFECTS_DIR = "effects";
 const app = JSON.parse(readFileSync(join(root, "data/app.json"), "utf8"));
 
 const fonts = Object.fromEntries(
@@ -49,9 +49,9 @@ async function collect() {
       api(`repos/${UPSTREAM}/releases?per_page=100`),
       countContributors(UPSTREAM),
       (await request(`https://raw.githubusercontent.com/${UPSTREAM}/main/registry/registry.json`)).json(),
-      (await request(`https://raw.githubusercontent.com/${EFFECTS}/main/registry.json`)).json(),
-      api(`repos/${EFFECTS}/contents/effects`),
-      api(`repos/${EFFECTS}/contents/transitions/gl`),
+      (await request(`https://raw.githubusercontent.com/${SELF}/main/${EFFECTS_DIR}/registry.json`)).json(),
+      api(`repos/${SELF}/contents/${EFFECTS_DIR}/effects`),
+      api(`repos/${SELF}/contents/${EFFECTS_DIR}/transitions/gl`),
       api(`repos/${SELF}/releases/latest`),
     ]);
 
