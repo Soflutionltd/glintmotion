@@ -7,10 +7,10 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
-      - "effects/**"
-      - "transitions/**"
-      - "scripts/**"
-      - "vendor/**"
+      - "effects/effects/**"
+      - "effects/transitions/**"
+      - "effects/scripts/**"
+      - "effects/vendor/**"
   workflow_dispatch:
     inputs:
       pr:
@@ -22,7 +22,7 @@ permissions:
   pull-requests: write
 
 concurrency:
-  group: ai-review-${{ github.event.pull_request.number || inputs.pr }}
+  group: effects-ai-review-${{ github.event.pull_request.number || inputs.pr }}
   cancel-in-progress: true
 
 jobs:
@@ -49,7 +49,7 @@ jobs:
       - name: Review
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: node scripts/ai-review.mjs "$RUNNER_TEMP/pr.diff" > "$RUNNER_TEMP/review.md"
+        run: node effects/scripts/ai-review.mjs "$RUNNER_TEMP/pr.diff" > "$RUNNER_TEMP/review.md"
 
       - name: Post the review
         run: |

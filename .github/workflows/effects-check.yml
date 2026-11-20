@@ -2,15 +2,21 @@ name: Check effects
 
 on:
   pull_request:
+    paths:
+      - "effects/**"
+      - ".github/workflows/effects-check.yml"
   push:
     branches: [main]
+    paths:
+      - "effects/**"
+      - ".github/workflows/effects-check.yml"
   workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: check-${{ github.ref }}
+  group: effects-check-${{ github.ref }}
   cancel-in-progress: true
 
 env:
@@ -20,6 +26,9 @@ jobs:
   check:
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: effects
     steps:
       - uses: actions/checkout@v4
 
