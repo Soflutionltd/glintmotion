@@ -11,12 +11,12 @@
   <img src="https://img.shields.io/badge/notaris%C3%A9e-par%20Apple-f3f4f6?style=flat-square&labelColor=0b0c0e" alt="Notarisée par Apple">
   <a href="#connecter-ton-agent"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSoflutionltd%2Fglintmotion%2Fmain%2Fdata%2Fstats.json&query=%24.glintmotion.agentTools&suffix=%20outils&label=MCP&style=flat-square&labelColor=0b0c0e&color=4fdb5e" alt="Outils d'agent MCP"></a>
   <a href="https://github.com/Soflutionltd/glintmotion-source"><img src="https://img.shields.io/badge/code%20source-sur%20GitHub-f3f4f6?style=flat-square&labelColor=0b0c0e&logo=github&logoColor=f3f4f6" alt="Code source sur GitHub"></a>
-  <a href="https://github.com/Soflutionltd/glintmotion-effects"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSoflutionltd%2Fglintmotion%2Fmain%2Fdata%2Fstats.json&query=%24.glintmotion.catalog&label=catalogue&suffix=%20%C3%A9l%C3%A9ments&style=flat-square&labelColor=0b0c0e&color=4fdb5e" alt="Éléments du catalogue"></a>
+  <a href="https://github.com/Soflutionltd/glintmotion/tree/main/effects"><img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FSoflutionltd%2Fglintmotion%2Fmain%2Fdata%2Fstats.json&query=%24.glintmotion.catalog&label=catalogue&suffix=%20%C3%A9l%C3%A9ments&style=flat-square&labelColor=0b0c0e&color=4fdb5e" alt="Éléments du catalogue"></a>
 </p>
 
 <p align="center">
   <a href="https://github.com/Soflutionltd/glintmotion/releases/latest/download/Glintmotion-darwin-arm64.zip"><img src="assets/buttons/download.svg" height="56" alt="Télécharger Glintmotion pour macOS"></a>&nbsp;
-  <a href="https://github.com/Soflutionltd/glintmotion-effects"><img src="assets/buttons/effects.svg" height="56" alt="Bibliothèque Glintmotion Effects"></a>&nbsp;
+  <a href="https://github.com/Soflutionltd/glintmotion/tree/main/effects"><img src="assets/buttons/effects.svg" height="56" alt="Bibliothèque Glintmotion Effects"></a>&nbsp;
   <a href="https://github.com/Soflutionltd/glintmotion/releases/latest"><img src="assets/buttons/whats-new.svg" height="56" alt="Nouveautés de la dernière version"></a>
 </p>
 
@@ -133,16 +133,16 @@ Comment Glintmotion se compare à HyperFrames, le moteur open source de HeyGen q
 ## Bibliothèque d'effets
 
 <p align="center">
-  <a href="https://github.com/Soflutionltd/glintmotion-effects"><img src="assets/effects.webp" width="100%" alt="Cinq effets Glintmotion qui jouent côte à côte"></a>
+  <a href="https://github.com/Soflutionltd/glintmotion/tree/main/effects"><img src="assets/effects.webp" width="100%" alt="Cinq effets Glintmotion qui jouent côte à côte"></a>
 </p>
 
-[Glintmotion Effects](https://github.com/Soflutionltd/glintmotion-effects) est un catalogue public d'effets et de transitions. Demande-en un à ton agent, ou installe-le toi-même avec la commande `glintmotion` (installée depuis **Connecter un agent**) :
+[Glintmotion Effects](https://github.com/Soflutionltd/glintmotion/tree/main/effects) est un catalogue public d'effets et de transitions. Demande-en un à ton agent, ou installe-le toi-même avec la commande `glintmotion` (installée depuis **Connecter un agent**) :
 
 ```bash
-glintmotion add split-headline --registry https://raw.githubusercontent.com/Soflutionltd/glintmotion-effects/main
+glintmotion add split-headline --registry https://raw.githubusercontent.com/Soflutionltd/glintmotion/main/effects
 ```
 
-Chaque contribution passe par un robot avant la relecture : pas d'accès au réseau, ni hasard ni horloge, une licence acceptée, et un vrai rendu de l'effet. La bibliothèque est gratuite pour un usage non commercial ([PolyForm Noncommercial](https://github.com/Soflutionltd/glintmotion-effects/blob/main/LICENSE.md)) ; les œuvres de tiers gardent leur propre licence.
+Chaque contribution passe par un robot avant la relecture : pas d'accès au réseau, ni hasard ni horloge, une licence acceptée, et un vrai rendu de l'effet. La bibliothèque est gratuite pour un usage non commercial ([PolyForm Noncommercial](https://github.com/Soflutionltd/glintmotion/blob/main/effects/LICENSE.md)) ; les œuvres de tiers gardent leur propre licence.
 
 ## Connecter ton agent
 
@@ -208,7 +208,7 @@ Ouvre une <a href="https://github.com/Soflutionltd/glintmotion/issues">issue</a>
 <details>
 <summary><b>Je peux ajouter un effet à la bibliothèque ?</b></summary>
 <br>
-Oui. Lis le <a href="https://github.com/Soflutionltd/glintmotion-effects/blob/main/CONTRIBUTING.md">guide de contribution</a>, puis ouvre une pull request sur Glintmotion Effects.
+Oui. Lis le <a href="https://github.com/Soflutionltd/glintmotion/blob/main/effects/CONTRIBUTING.md">guide de contribution</a>, puis ouvre une pull request sur ce dépôt.
 </details>
 
 ## Crédits
@@ -218,6 +218,8 @@ Oui. Lis le <a href="https://github.com/Soflutionltd/glintmotion-effects/blob/ma
 - [Manrope](https://github.com/googlefonts/manrope) (SIL Open Font License), la police de cette page.
 
 Les licences du code tiers contenu dans l'app sont listées dans [LICENSE.md](https://github.com/Soflutionltd/glintmotion-source/blob/main/LICENSE.md).
+
+Le catalogue d'effets est dans [`effects/`](effects/). La licence PolyForm Noncommercial de [`effects/LICENSE.md`](effects/LICENSE.md) ne couvre que ce dossier ; les effets de tiers gardent les licences listées dans [`effects/NOTICE.md`](effects/NOTICE.md).
 
 La bannière en haut est une composition Glintmotion : sa source est dans [`banner/`](banner/), rendue par le moteur de Glintmotion.
 
