@@ -3,7 +3,7 @@
   "name": "gl-simple-flip",
   "type": "hyperframes:component",
   "title": "SimpleFlip transition",
-  "description": "The outgoing image flips around the vertical axis into the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-simple-flip\", duration }] }).",
+  "description": "The outgoing image flips around the vertical axis into the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-simple-flip\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-simple-flip.js",
-      "target": "vendor/glintmotion/transitions/gl-simple-flip.js",
+      "target": "lib/glintmotion/transitions/gl-simple-flip.js",
       "type": "hyperframes:asset"
     }
   ]

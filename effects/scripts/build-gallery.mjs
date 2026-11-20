@@ -62,8 +62,8 @@ const html = `<!doctype html>
   <head>
     <meta charset="utf-8" />
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-    <script src="vendor/glintmotion/hyper-shader.js"></script>
-    <script src="vendor/glintmotion/gl-transitions.js"></script>
+    <script src="lib/glintmotion/hyper-shader.js"></script>
+    <script src="lib/glintmotion/gl-transitions.js"></script>
     <style>
       html, body { margin: 0; background-color: #000000; }
       #root { position: relative; width: ${W}px; height: ${H}px; overflow: hidden; font-family: Helvetica, Arial, sans-serif; }
@@ -95,9 +95,9 @@ ${scenes.join("\n")}
 </html>
 `;
 
-mkdirSync(join(out, "vendor", "glintmotion"), { recursive: true });
-copyFileSync(join(root, "components", "hyper-shader", "hyper-shader.js"), join(out, "vendor", "glintmotion", "hyper-shader.js"));
-copyFileSync(join(root, "components", "gl-transitions", "gl-transitions.js"), join(out, "vendor", "glintmotion", "gl-transitions.js"));
+mkdirSync(join(out, "lib", "glintmotion"), { recursive: true });
+copyFileSync(join(root, "components", "hyper-shader", "hyper-shader.js"), join(out, "lib", "glintmotion", "hyper-shader.js"));
+copyFileSync(join(root, "components", "gl-transitions", "gl-transitions.js"), join(out, "lib", "glintmotion", "gl-transitions.js"));
 writeFileSync(join(out, "index.html"), html);
 writeFileSync(
   join(out, "timings.json"),

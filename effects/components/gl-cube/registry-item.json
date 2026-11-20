@@ -3,7 +3,7 @@
   "name": "gl-cube",
   "type": "hyperframes:component",
   "title": "Cube transition",
-  "description": "The two images are faces of a rotating 3D cube, with a floor reflection. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-cube\", duration }] }).",
+  "description": "The two images are faces of a rotating 3D cube, with a floor reflection. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-cube\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -23,7 +23,7 @@
   "files": [
     {
       "path": "gl-cube.js",
-      "target": "vendor/glintmotion/transitions/gl-cube.js",
+      "target": "lib/glintmotion/transitions/gl-cube.js",
       "type": "hyperframes:asset"
     }
   ]

@@ -3,7 +3,7 @@
   "name": "gl-bounce",
   "type": "hyperframes:component",
   "title": "Bounce transition",
-  "description": "The outgoing image drops out of the frame with a few bounces, revealing the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-bounce\", duration }] }).",
+  "description": "The outgoing image drops out of the frame with a few bounces, revealing the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-bounce\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -23,7 +23,7 @@
   "files": [
     {
       "path": "gl-bounce.js",
-      "target": "vendor/glintmotion/transitions/gl-bounce.js",
+      "target": "lib/glintmotion/transitions/gl-bounce.js",
       "type": "hyperframes:asset"
     }
   ]

@@ -3,7 +3,7 @@
   "name": "gl-overexposure",
   "type": "hyperframes:component",
   "title": "Overexposure transition",
-  "description": "A crossfade through a washed-out, overexposed white. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-overexposure\", duration }] }).",
+  "description": "A crossfade through a washed-out, overexposed white. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-overexposure\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-overexposure.js",
-      "target": "vendor/glintmotion/transitions/gl-overexposure.js",
+      "target": "lib/glintmotion/transitions/gl-overexposure.js",
       "type": "hyperframes:asset"
     }
   ]

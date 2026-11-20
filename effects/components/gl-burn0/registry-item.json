@@ -3,7 +3,7 @@
   "name": "gl-burn0",
   "type": "hyperframes:component",
   "title": "Burn0 transition",
-  "description": "The outgoing image burns away in noisy, glowing patches. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-burn0\", duration }] }).",
+  "description": "The outgoing image burns away in noisy, glowing patches. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-burn0\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-burn0.js",
-      "target": "vendor/glintmotion/transitions/gl-burn0.js",
+      "target": "lib/glintmotion/transitions/gl-burn0.js",
       "type": "hyperframes:asset"
     }
   ]

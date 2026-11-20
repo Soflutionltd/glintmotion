@@ -3,7 +3,7 @@
   "name": "gl-crosswarp",
   "type": "hyperframes:component",
   "title": "Crosswarp transition",
-  "description": "The outgoing image zooms in while the incoming one zooms out into place, sweeping from right to left. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-crosswarp\", duration }] }).",
+  "description": "The outgoing image zooms in while the incoming one zooms out into place, sweeping from right to left. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-crosswarp\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-crosswarp.js",
-      "target": "vendor/glintmotion/transitions/gl-crosswarp.js",
+      "target": "lib/glintmotion/transitions/gl-crosswarp.js",
       "type": "hyperframes:asset"
     }
   ]

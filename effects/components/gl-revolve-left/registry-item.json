@@ -3,7 +3,7 @@
   "name": "gl-revolve-left",
   "type": "hyperframes:component",
   "title": "Revolve_Left transition",
-  "description": "The outgoing image swirls and zooms with motion blur into the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-revolve-left\", duration }] }).",
+  "description": "The outgoing image swirls and zooms with motion blur into the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-revolve-left\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -23,7 +23,7 @@
   "files": [
     {
       "path": "gl-revolve-left.js",
-      "target": "vendor/glintmotion/transitions/gl-revolve-left.js",
+      "target": "lib/glintmotion/transitions/gl-revolve-left.js",
       "type": "hyperframes:asset"
     }
   ]

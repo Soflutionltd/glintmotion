@@ -3,7 +3,7 @@
   "name": "gl-fadegrayscale",
   "type": "hyperframes:component",
   "title": "Fadegrayscale transition",
-  "description": "A crossfade through grayscale. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-fadegrayscale\", duration }] }).",
+  "description": "A crossfade through grayscale. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-fadegrayscale\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-fadegrayscale.js",
-      "target": "vendor/glintmotion/transitions/gl-fadegrayscale.js",
+      "target": "lib/glintmotion/transitions/gl-fadegrayscale.js",
       "type": "hyperframes:asset"
     }
   ]

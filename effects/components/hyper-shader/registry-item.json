@@ -15,7 +15,7 @@
   "files": [
     {
       "path": "hyper-shader.js",
-      "target": "vendor/glintmotion/hyper-shader.js",
+      "target": "lib/glintmotion/hyper-shader.js",
       "type": "hyperframes:asset"
     }
   ]

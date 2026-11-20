@@ -3,7 +3,7 @@
   "name": "gl-tiles-wave",
   "type": "hyperframes:component",
   "title": "TilesWave transition",
-  "description": "The incoming image is revealed tile by tile in a diagonal wave. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-tiles-wave\", duration }] }).",
+  "description": "The incoming image is revealed tile by tile in a diagonal wave. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-tiles-wave\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-tiles-wave.js",
-      "target": "vendor/glintmotion/transitions/gl-tiles-wave.js",
+      "target": "lib/glintmotion/transitions/gl-tiles-wave.js",
       "type": "hyperframes:asset"
     }
   ]

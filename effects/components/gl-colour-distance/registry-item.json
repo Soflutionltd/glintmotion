@@ -3,7 +3,7 @@
   "name": "gl-colour-distance",
   "type": "hyperframes:component",
   "title": "ColourDistance transition",
-  "description": "Pixels switch to the incoming image in order of how close their colors are. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-colour-distance\", duration }] }).",
+  "description": "Pixels switch to the incoming image in order of how close their colors are. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-colour-distance\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-colour-distance.js",
-      "target": "vendor/glintmotion/transitions/gl-colour-distance.js",
+      "target": "lib/glintmotion/transitions/gl-colour-distance.js",
       "type": "hyperframes:asset"
     }
   ]

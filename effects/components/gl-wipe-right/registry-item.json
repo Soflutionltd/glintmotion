@@ -3,7 +3,7 @@
   "name": "gl-wipe-right",
   "type": "hyperframes:component",
   "title": "WipeRight transition",
-  "description": "A hard-edged wipe from left to right. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-wipe-right\", duration }] }).",
+  "description": "A hard-edged wipe from left to right. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-wipe-right\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-wipe-right.js",
-      "target": "vendor/glintmotion/transitions/gl-wipe-right.js",
+      "target": "lib/glintmotion/transitions/gl-wipe-right.js",
       "type": "hyperframes:asset"
     }
   ]

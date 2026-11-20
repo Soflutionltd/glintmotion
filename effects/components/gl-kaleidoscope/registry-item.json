@@ -3,7 +3,7 @@
   "name": "gl-kaleidoscope",
   "type": "hyperframes:component",
   "title": "Kaleidoscope transition",
-  "description": "A crossfade through a spinning kaleidoscope. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-kaleidoscope\", duration }] }).",
+  "description": "A crossfade through a spinning kaleidoscope. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-kaleidoscope\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-kaleidoscope.js",
-      "target": "vendor/glintmotion/transitions/gl-kaleidoscope.js",
+      "target": "lib/glintmotion/transitions/gl-kaleidoscope.js",
       "type": "hyperframes:asset"
     }
   ]

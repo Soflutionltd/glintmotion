@@ -25,12 +25,12 @@ it. Glintmotion reads it next to the HyperFrames catalog.
 ## Use a transition
 
 Install `gl-cube` (or `gl-transitions` for all of them). It brings
-`vendor/glintmotion/hyper-shader.js`, which replaces the HyperShader CDN script.
+`lib/glintmotion/hyper-shader.js`, which replaces the HyperShader CDN script.
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
-<script src="vendor/glintmotion/hyper-shader.js"></script>
-<script src="vendor/glintmotion/transitions/gl-cube.js"></script>
+<script src="lib/glintmotion/hyper-shader.js"></script>
+<script src="lib/glintmotion/transitions/gl-cube.js"></script>
 <script>
   const tl = HyperShader.init({
     bgColor: "#000000",

@@ -3,7 +3,7 @@
   "name": "gl-cross-zoom",
   "type": "hyperframes:component",
   "title": "CrossZoom transition",
-  "description": "A crossfade through a strong zoom blur. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-cross-zoom\", duration }] }).",
+  "description": "A crossfade through a strong zoom blur. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-cross-zoom\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-cross-zoom.js",
-      "target": "vendor/glintmotion/transitions/gl-cross-zoom.js",
+      "target": "lib/glintmotion/transitions/gl-cross-zoom.js",
       "type": "hyperframes:asset"
     }
   ]

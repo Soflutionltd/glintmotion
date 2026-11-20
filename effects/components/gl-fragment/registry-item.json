@@ -3,7 +3,7 @@
   "name": "gl-fragment",
   "type": "hyperframes:component",
   "title": "Fragment transition",
-  "description": "The outgoing image shatters into fragments that fly away. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-fragment\", duration }] }).",
+  "description": "The outgoing image shatters into fragments that fly away. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-fragment\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-fragment.js",
-      "target": "vendor/glintmotion/transitions/gl-fragment.js",
+      "target": "lib/glintmotion/transitions/gl-fragment.js",
       "type": "hyperframes:asset"
     }
   ]

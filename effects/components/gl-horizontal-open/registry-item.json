@@ -3,7 +3,7 @@
   "name": "gl-horizontal-open",
   "type": "hyperframes:component",
   "title": "HorizontalOpen transition",
-  "description": "The incoming image opens from a line in the middle toward the top and bottom edges. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-horizontal-open\", duration }] }).",
+  "description": "The incoming image opens from a line in the middle toward the top and bottom edges. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-horizontal-open\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-horizontal-open.js",
-      "target": "vendor/glintmotion/transitions/gl-horizontal-open.js",
+      "target": "lib/glintmotion/transitions/gl-horizontal-open.js",
       "type": "hyperframes:asset"
     }
   ]

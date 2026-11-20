@@ -3,7 +3,7 @@
   "name": "gl-multiply-blend",
   "type": "hyperframes:component",
   "title": "Multiply_blend transition",
-  "description": "A crossfade through the multiplied blend of both images. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-multiply-blend\", duration }] }).",
+  "description": "A crossfade through the multiplied blend of both images. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-multiply-blend\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-multiply-blend.js",
-      "target": "vendor/glintmotion/transitions/gl-multiply-blend.js",
+      "target": "lib/glintmotion/transitions/gl-multiply-blend.js",
       "type": "hyperframes:asset"
     }
   ]

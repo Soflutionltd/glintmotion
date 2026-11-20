@@ -3,7 +3,7 @@
   "name": "gl-drop-zone-flicker",
   "type": "hyperframes:component",
   "title": "Drop_Zone_Flicker transition",
-  "description": "A flickering glitch with RGB offset, ghosting and scanlines that flashes back to the outgoing image. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-drop-zone-flicker\", duration }] }).",
+  "description": "A flickering glitch with RGB offset, ghosting and scanlines that flashes back to the outgoing image. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-drop-zone-flicker\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -23,7 +23,7 @@
   "files": [
     {
       "path": "gl-drop-zone-flicker.js",
-      "target": "vendor/glintmotion/transitions/gl-drop-zone-flicker.js",
+      "target": "lib/glintmotion/transitions/gl-drop-zone-flicker.js",
       "type": "hyperframes:asset"
     }
   ]

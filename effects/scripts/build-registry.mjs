@@ -13,7 +13,7 @@ const root = resolve(import.meta.dirname, "..");
 const componentsDir = join(root, "components");
 const SCHEMA_ITEM = "https://hyperframes.heygen.com/schema/registry-item.json";
 const SHADER_RUNTIME = "hyper-shader";
-const RUNTIME_TARGET = "vendor/glintmotion/hyper-shader.js";
+const RUNTIME_TARGET = "lib/glintmotion/hyper-shader.js";
 
 const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
 const writeJson = (path, value) => writeFileSync(path, JSON.stringify(value, null, 2) + "\n");
@@ -87,7 +87,7 @@ for (const t of shaders) {
       authorUrl: "https://gl-transitions.com",
       license: t.license.replace(/^BSD ([23]) Clause$/i, "BSD-$1-Clause"),
       registryDependencies: [SHADER_RUNTIME],
-      files: [{ path: file, target: `vendor/glintmotion/transitions/${file}`, type: "hyperframes:asset" }],
+      files: [{ path: file, target: `lib/glintmotion/transitions/${file}`, type: "hyperframes:asset" }],
     },
     { [file]: registerScript([t]) },
   );
@@ -105,7 +105,7 @@ writeItem(
     authorUrl: "https://gl-transitions.com",
     license: "MIT",
     registryDependencies: [SHADER_RUNTIME],
-    files: [{ path: "gl-transitions.js", target: "vendor/glintmotion/gl-transitions.js", type: "hyperframes:asset" }],
+    files: [{ path: "gl-transitions.js", target: "lib/glintmotion/gl-transitions.js", type: "hyperframes:asset" }],
   },
   { "gl-transitions.js": registerScript(shaders) },
 );

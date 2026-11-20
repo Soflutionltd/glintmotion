@@ -3,7 +3,7 @@
   "name": "gl-simple-zoom-out",
   "type": "hyperframes:component",
   "title": "SimpleZoomOut transition",
-  "description": "The incoming image zooms out into place while fading in. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-simple-zoom-out\", duration }] }).",
+  "description": "The incoming image zooms out into place while fading in. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-simple-zoom-out\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-simple-zoom-out.js",
-      "target": "vendor/glintmotion/transitions/gl-simple-zoom-out.js",
+      "target": "lib/glintmotion/transitions/gl-simple-zoom-out.js",
       "type": "hyperframes:asset"
     }
   ]

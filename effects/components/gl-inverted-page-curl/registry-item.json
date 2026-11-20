@@ -3,7 +3,7 @@
   "name": "gl-inverted-page-curl",
   "type": "hyperframes:component",
   "title": "InvertedPageCurl transition",
-  "description": "The outgoing image curls away like a page, revealing the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-inverted-page-curl\", duration }] }).",
+  "description": "The outgoing image curls away like a page, revealing the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-inverted-page-curl\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-inverted-page-curl.js",
-      "target": "vendor/glintmotion/transitions/gl-inverted-page-curl.js",
+      "target": "lib/glintmotion/transitions/gl-inverted-page-curl.js",
       "type": "hyperframes:asset"
     }
   ]

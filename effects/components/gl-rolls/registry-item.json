@@ -3,7 +3,7 @@
   "name": "gl-rolls",
   "type": "hyperframes:component",
   "title": "Rolls transition",
-  "description": "The outgoing image rolls away around a corner, revealing the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-rolls\", duration }] }).",
+  "description": "The outgoing image rolls away around a corner, revealing the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-rolls\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-rolls.js",
-      "target": "vendor/glintmotion/transitions/gl-rolls.js",
+      "target": "lib/glintmotion/transitions/gl-rolls.js",
       "type": "hyperframes:asset"
     }
   ]

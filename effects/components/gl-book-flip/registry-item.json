@@ -3,7 +3,7 @@
   "name": "gl-book-flip",
   "type": "hyperframes:component",
   "title": "BookFlip transition",
-  "description": "The outgoing image turns like a book page from right to left, revealing the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-book-flip\", duration }] }).",
+  "description": "The outgoing image turns like a book page from right to left, revealing the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-book-flip\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-book-flip.js",
-      "target": "vendor/glintmotion/transitions/gl-book-flip.js",
+      "target": "lib/glintmotion/transitions/gl-book-flip.js",
       "type": "hyperframes:asset"
     }
   ]

@@ -3,7 +3,7 @@
   "name": "gl-x-axis-translation",
   "type": "hyperframes:component",
   "title": "X_axis_translation transition",
-  "description": "The outgoing image slides to the right, uncovering a crossfade to the incoming one. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-x-axis-translation\", duration }] }).",
+  "description": "The outgoing image slides to the right, uncovering a crossfade to the incoming one. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-x-axis-translation\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-x-axis-translation.js",
-      "target": "vendor/glintmotion/transitions/gl-x-axis-translation.js",
+      "target": "lib/glintmotion/transitions/gl-x-axis-translation.js",
       "type": "hyperframes:asset"
     }
   ]

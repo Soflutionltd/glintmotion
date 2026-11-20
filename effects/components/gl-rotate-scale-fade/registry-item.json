@@ -3,7 +3,7 @@
   "name": "gl-rotate-scale-fade",
   "type": "hyperframes:component",
   "title": "Rotate_scale_fade transition",
-  "description": "The outgoing image spins and zooms while fading to the incoming one, over a background color. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-rotate-scale-fade\", duration }] }).",
+  "description": "The outgoing image spins and zooms while fading to the incoming one, over a background color. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-rotate-scale-fade\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-rotate-scale-fade.js",
-      "target": "vendor/glintmotion/transitions/gl-rotate-scale-fade.js",
+      "target": "lib/glintmotion/transitions/gl-rotate-scale-fade.js",
       "type": "hyperframes:asset"
     }
   ]

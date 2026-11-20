@@ -3,7 +3,7 @@
   "name": "gl-ripple",
   "type": "hyperframes:component",
   "title": "Ripple transition",
-  "description": "Ripples spread from the center while crossfading. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-ripple\", duration }] }).",
+  "description": "Ripples spread from the center while crossfading. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-ripple\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-ripple.js",
-      "target": "vendor/glintmotion/transitions/gl-ripple.js",
+      "target": "lib/glintmotion/transitions/gl-ripple.js",
       "type": "hyperframes:asset"
     }
   ]

@@ -3,7 +3,7 @@
   "name": "gl-angular",
   "type": "hyperframes:component",
   "title": "Angular transition",
-  "description": "A wipe that sweeps around the center from a starting angle. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-angular\", duration }] }).",
+  "description": "A wipe that sweeps around the center from a starting angle. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-angular\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-angular.js",
-      "target": "vendor/glintmotion/transitions/gl-angular.js",
+      "target": "lib/glintmotion/transitions/gl-angular.js",
       "type": "hyperframes:asset"
     }
   ]

@@ -3,7 +3,7 @@
   "name": "gl-cannabisleaf",
   "type": "hyperframes:component",
   "title": "Cannabisleaf transition",
-  "description": "A cannabis-leaf shape grows from the center to reveal the incoming image. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-cannabisleaf\", duration }] }).",
+  "description": "A cannabis-leaf shape grows from the center to reveal the incoming image. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-cannabisleaf\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-cannabisleaf.js",
-      "target": "vendor/glintmotion/transitions/gl-cannabisleaf.js",
+      "target": "lib/glintmotion/transitions/gl-cannabisleaf.js",
       "type": "hyperframes:asset"
     }
   ]

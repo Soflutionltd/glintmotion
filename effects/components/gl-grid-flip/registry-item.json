@@ -3,7 +3,7 @@
   "name": "gl-grid-flip",
   "type": "hyperframes:component",
   "title": "GridFlip transition",
-  "description": "The image splits into a grid of tiles that flip one by one to the incoming image. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-grid-flip\", duration }] }).",
+  "description": "The image splits into a grid of tiles that flip one by one to the incoming image. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-grid-flip\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-grid-flip.js",
-      "target": "vendor/glintmotion/transitions/gl-grid-flip.js",
+      "target": "lib/glintmotion/transitions/gl-grid-flip.js",
       "type": "hyperframes:asset"
     }
   ]

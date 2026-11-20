@@ -3,7 +3,7 @@
   "name": "gl-windowblinds",
   "type": "hyperframes:component",
   "title": "Windowblinds transition",
-  "description": "A crossfade through horizontal window blinds. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-windowblinds\", duration }] }).",
+  "description": "A crossfade through horizontal window blinds. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-windowblinds\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-windowblinds.js",
-      "target": "vendor/glintmotion/transitions/gl-windowblinds.js",
+      "target": "lib/glintmotion/transitions/gl-windowblinds.js",
       "type": "hyperframes:asset"
     }
   ]

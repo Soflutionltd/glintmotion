@@ -3,7 +3,7 @@
   "name": "gl-star-wipe",
   "type": "hyperframes:component",
   "title": "StarWipe transition",
-  "description": "A growing star reveals the incoming image. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-star-wipe\", duration }] }).",
+  "description": "A growing star reveals the incoming image. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-star-wipe\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-star-wipe.js",
-      "target": "vendor/glintmotion/transitions/gl-star-wipe.js",
+      "target": "lib/glintmotion/transitions/gl-star-wipe.js",
       "type": "hyperframes:asset"
     }
   ]

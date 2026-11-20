@@ -3,7 +3,7 @@
   "name": "gl-wipe-down",
   "type": "hyperframes:component",
   "title": "WipeDown transition",
-  "description": "A hard-edged wipe from top to bottom. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-wipe-down\", duration }] }).",
+  "description": "A hard-edged wipe from top to bottom. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-wipe-down\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -21,7 +21,7 @@
   "files": [
     {
       "path": "gl-wipe-down.js",
-      "target": "vendor/glintmotion/transitions/gl-wipe-down.js",
+      "target": "lib/glintmotion/transitions/gl-wipe-down.js",
       "type": "hyperframes:asset"
     }
   ]

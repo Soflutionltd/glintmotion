@@ -3,7 +3,7 @@
   "name": "gl-puzzle-right",
   "type": "hyperframes:component",
   "title": "PuzzleRight transition",
-  "description": "The image splits into a grid of tiles that flip one by one to the incoming image. Load vendor/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-puzzle-right\", duration }] }).",
+  "description": "The image splits into a grid of tiles that flip one by one to the incoming image. Load lib/glintmotion/hyper-shader.js, then this file, then call HyperShader.init({ transitions: [{ time, shader: \"gl-puzzle-right\", duration }] }).",
   "tags": [
     "transition",
     "shader",
@@ -22,7 +22,7 @@
   "files": [
     {
       "path": "gl-puzzle-right.js",
-      "target": "vendor/glintmotion/transitions/gl-puzzle-right.js",
+      "target": "lib/glintmotion/transitions/gl-puzzle-right.js",
       "type": "hyperframes:asset"
     }
   ]
