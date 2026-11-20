@@ -5,6 +5,10 @@ A library of motion effects for [Glintmotion](https://github.com/Soflutionltd) a
 text, 3D and background effects next. Every effect is checked by a real render before it
 is accepted.
 
+The catalog lives in the `effects/` folder of the
+[Glintmotion repository](https://github.com/Soflutionltd/glintmotion); the paths and commands
+below are relative to that folder.
+
 The catalog uses the HyperFrames registry format, so the same `add` command installs from
 it. Glintmotion reads it next to the HyperFrames catalog.
 
@@ -81,7 +85,7 @@ node scripts/build-effects-gallery.mjs /tmp/fx # render it to check every effect
 
 ## Licenses
 
-Original work in this repository is under the
+Original work in this folder is under the
 [PolyForm Noncommercial License 1.0.0](LICENSE.md). Third-party effects keep their own
 license, written in each item's `license` field and in the source file header; see
 [NOTICE.md](NOTICE.md). Contributions: [CONTRIBUTING.md](CONTRIBUTING.md).

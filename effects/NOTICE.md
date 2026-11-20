@@ -1,10 +1,10 @@
 # Notices
 
-Required Notice: Copyright (c) 2026 Soflution Ltd (https://github.com/Soflutionltd/glintmotion-effects)
+Required Notice: Copyright (c) 2026 Soflution Ltd (https://github.com/Soflutionltd/glintmotion/tree/main/effects)
 
-Original work in this repository is licensed under the PolyForm Noncommercial License 1.0.0
+Original work in this folder is licensed under the PolyForm Noncommercial License 1.0.0
 ([LICENSE.md](LICENSE.md)). The parts below come from other projects and stay under their own
-licenses, which this repository does not change.
+licenses, which this catalog does not change.
 
 ## GL Transitions
 

@@ -16,6 +16,10 @@ Effects made with an AI agent are welcome, as long as they pass the checks and t
 
 ## What to send
 
+The catalog lives in the `effects/` folder of the Glintmotion repository. Paths and commands
+here are relative to that folder, so a new effect goes to `effects/effects/<name>/` from the
+repository root.
+
 One folder `effects/<name>/` (kebab-case), with only `.html`, `.json` and `.md` files of at
 most 200 KB each:
 
@@ -27,7 +31,7 @@ most 200 KB each:
 - `effect.json`: `title`, `description`, kebab-case `tags`, and for work you did not write,
   `author`, `authorUrl` and `license` (SPDX id: MIT, Apache-2.0, BSD-2-Clause,
   BSD-3-Clause, ISC, CC0-1.0, CC-BY-4.0). Without `license`, the effect is your original
-  work under the repository license.
+  work under the catalog license ([LICENSE.md](LICENSE.md)).
 
 Then run, and commit what they generate:
 
@@ -49,5 +53,5 @@ the render and merges; nothing is merged by a robot.
 By opening a pull request you confirm that you wrote the contribution or have the right to
 submit it under its stated license, and you grant Soflution Ltd a perpetual, worldwide,
 non-exclusive, royalty-free, irrevocable license to use, copy, modify, distribute,
-sublicense and use commercially your contribution, as part of this repository or separately.
+sublicense and use commercially your contribution, as part of the catalog or separately.
 Third-party code you include keeps its own license.

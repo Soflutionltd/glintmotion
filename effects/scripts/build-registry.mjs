@@ -155,7 +155,7 @@ writeJson(join(root, "catalog.json"), { generated: "scripts/build-registry.mjs",
 writeJson(join(root, "registry.json"), {
   $schema: "https://hyperframes.heygen.com/schema/registry.json",
   name: "glintmotion-effects",
-  homepage: "https://github.com/Soflutionltd/glintmotion-effects",
+  homepage: "https://github.com/Soflutionltd/glintmotion/tree/main/effects",
   items: entries,
 });
 
